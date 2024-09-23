@@ -54,7 +54,7 @@ export default function Search () {
         <>
         <div className="grid grid-cols-2 desktop:grid-cols-5 tablet:grid-cols-4 gap-3">
             {
-                data.results.filter(el => el.name.includes(name)).map((el, index) => (
+                data.results.filter(el => el.name.includes(name.toLowerCase())).map((el, index) => (
                     <PokemonCard url={el.url} key={index}/>
                 ))
             }

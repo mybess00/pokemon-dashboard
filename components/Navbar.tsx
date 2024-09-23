@@ -44,6 +44,11 @@ export default function Navbar () {
                     onChange={(e) => {
                         setName(e.target.value)
                     }}
+                    onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                            goSearch()
+                        }
+                    }}
                     placeholder="Enter a pokemon name to search"
 
                 />

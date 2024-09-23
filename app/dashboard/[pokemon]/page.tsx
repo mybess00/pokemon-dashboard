@@ -32,7 +32,7 @@ export default function Pokemon ({ params }:  { params: { pokemon: string } }) {
         return <Skeleton className="w-full h-[400px]:"/>
     }
     return (
-        <div className="flex flex-col tablet:grid desktop:grid grid-cols-[40%_1fr] gap-5 border-2 rounded-lg p-4">
+        <div className="flex flex-col bg-white tablet:grid desktop:grid grid-cols-[40%_1fr] gap-5 border-2 rounded-lg p-4">
             <div className="flex flex-col space-y-1.5 relative aspect-square overflow-hidden w-full">
                 <Image
                     src={data.sprites.front_default}
