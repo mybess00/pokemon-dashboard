@@ -27,6 +27,13 @@ export default function Pagination (props : Props) {
         change(url)
     }
 
+    /**
+     * This function calculates pagination values based on a URL containing the `offset` and `limit` parameters.
+     * It creates an array of pages with information about whether each page is the current one and adjusts the number of visible pages.
+     * 
+     * Returns an array of objects with information about the pages to display and whether they are the current page.
+     */
+
     const getPaginationValues = () => {
         const urlParams = new URLSearchParams(new URL(pagination.url).search)
         const offset = parseInt(urlParams.get('offset') as string,10)
@@ -43,14 +50,22 @@ export default function Pagination (props : Props) {
                 isActual: i === currentPage
             });
         }
+        // If there are 5 or fewer pages, we return all pages without making any modifications
         if (paginationValues.length <= 5) {
             return paginationValues
         }
+
         const indexActual = paginationValues.findIndex(el => el.isActual)
         let startIndex = Math.max(indexActual-2, 0)
+
+        //The final index is calculated, it is validated if there are not two pages of difference between the initial index and the current page 
+        //the final index is adjusted to display up to 5 pages
         const endIndex = indexActual-2 < 0
                             ? indexActual+3+((indexActual-2)*-1)
                             : indexActual+3
+
+       //The final index is calculated, it is validated if there are not two pages of difference between the initial index and the current page 
+       //the final index is adjusted to display up to 5 pages
         if (endIndex+1 > paginationValues.length) {
             startIndex = startIndex + (paginationValues.length-endIndex)
         } 
