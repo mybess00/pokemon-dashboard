@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 export const metadata: Metadata = {
     title: "Pokemon Database",
     description: "Explore and manage your Pokémon collection. View Pokémon details and navigate through the list using pagination.",
-    generator: "pokemon, pokeapi"
+    keywords: "pokemon, pokeapi",
 };
 
 export default function LayoutDashboard ({
