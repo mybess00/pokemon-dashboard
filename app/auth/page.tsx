@@ -15,6 +15,7 @@ import { Progress } from "@/components/ui/progress"
 import { useForm, Controller, SubmitHandler } from "react-hook-form"
 import { useState, useEffect } from "react"
 import { toast } from "sonner"
+import { useRouter } from "next/navigation"
 //utils
 import { mockAuthenticate } from "@/utils/auth"
 //types
@@ -24,6 +25,7 @@ export default function Auth () {
     const [progress, setProgress] = useState(0)
     const [loading, setLoading] = useState(false)
     const { control, handleSubmit } = useForm<AuthForm>()
+    const router = useRouter()
 
     const login: SubmitHandler<AuthForm> = async (data) => {
         setLoading(true)
@@ -41,7 +43,7 @@ export default function Auth () {
                 )
                 return 
             }
-            window.location.href = '/dashboard'
+            router.push('/dashboard')
         } catch (err) {
             toast(
                 "An error has occurred", {

@@ -9,6 +9,7 @@ import {
 //hooks
 import { useState } from "react"
 import { toast } from "sonner"
+import { useRouter } from "next/navigation"
 //utils
 import { logout } from "@/utils/auth"
 //icons
@@ -17,9 +18,10 @@ import { CiLogout } from "react-icons/ci";
 
 export default function Navbar () {
     const [name, setName] = useState("")
+    const router = useRouter()
     const goSearch = () => {
         if (name.length >= 2) {
-            window.location.href = `/dashboard/search?name=${name}`
+            router.push(`/dashboard/search?name=${name}`)
             return
         }
         toast(
@@ -34,7 +36,7 @@ export default function Navbar () {
     }
     const handleLogout = () => {
         logout()
-        window.location.href = "/auth"
+        router.push("/auth")
     }
     return (
         <nav className="fixed top-0 left-0 w-full z-50 h-20 flex flex-row justify-between bg-white px-2 tablet:px-4 desktop:px-4">
